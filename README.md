@@ -79,7 +79,7 @@ To run the whole application with it, change the import at the top of `src/sampl
 ## Key Technologies and Packages
 
 - Python 3
-- Classes, `@property`, `@dataclass`, `@classmethod`, and `@staticmethod`
+- Classes, `@property`, `@dataclass`, and `@staticmethod`
 - The `datetime` module from the standard library, for event dates
 - The `abc` module from the standard library, in `events_abc.py`
 - The `os` module from the standard library, to clear the screen

@@ -15,6 +15,9 @@ class Venue:
         # A dictionary, so an attendee can be looked up by email in one step
         self._attendees = {}
         self._reservations = []
+        # The venue issues reservation numbers, so every venue counts from 1001
+        # and the new venue each test builds always starts at the same number
+        self._next_number = 1001
 
     # Each collection can be read through a property. The property returns a new
     # list, so code outside the venue cannot add or remove anything without going
@@ -86,7 +89,8 @@ class Venue:
         if self.seats_left(event) == 0:
             print(f'{event.name} is sold out.')
             return None
-        reservation = Reservation(attendee, event)
+        reservation = Reservation(self._next_number, attendee, event)
+        self._next_number += 1
         self._reservations.append(reservation)
         return reservation
 

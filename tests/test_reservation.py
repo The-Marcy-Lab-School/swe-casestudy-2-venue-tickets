@@ -4,10 +4,10 @@ import pytest
 
 
 def test_each_new_reservation_gets_the_next_number(venue, jordan, jazz, today):
-    first = venue.book(jordan, jazz, today)
-    second = venue.book(jordan, jazz, today)
+    # The sample venue has already made reservations 1001 to 1004
+    reservation = venue.book(jordan, jazz, today)
 
-    assert second.number == first.number + 1
+    assert reservation.number == 1005
 
 
 def test_a_new_reservation_starts_reserved(venue, jordan, jazz, today):

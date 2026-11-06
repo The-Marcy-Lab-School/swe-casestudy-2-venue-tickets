@@ -6,7 +6,7 @@ Riverside Community Hall sells tickets for its concerts, workshops, and movie ni
 
 ## 2. UML class diagram
 
-`+` marks a public attribute or method and `-` marks a private one.
+`+` marks a public attribute or method and `-` marks a non-public one (one whose name begins with `_`).
 
 ```
 Venue
@@ -15,6 +15,7 @@ Venue
 - _events             list of Event
 - _attendees          dictionary of email -> Attendee
 - _reservations       list of Reservation
+- _next_number        the number the next reservation will get
 ------------------------------------------------------------
 + events, attendees, reservations    (read-only copies)
 + is_valid_email(email)              (static method)
@@ -49,14 +50,12 @@ Event
 
 Reservation
 ------------------------------------------------------------
-- _next_number        class attribute, shared by every reservation
 + number
 + attendee
 + event
 + price
 - _status             read through status, changed only by the methods below
 ------------------------------------------------------------
-+ issue_number()      (class method)
 + is_active()
 + pay()               requires reserved
 + check_in()          requires paid

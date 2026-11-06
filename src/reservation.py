@@ -30,12 +30,8 @@ def requires_paid(method):
 
 
 class Reservation:
-    # A class attribute: one counter shared by every reservation, so no two
-    # reservations are ever given the same number
-    _next_number = 1001
-
-    def __init__(self, attendee, event):
-        self.number = Reservation.issue_number()
+    def __init__(self, number, attendee, event):
+        self.number = number
         self.attendee = attendee
         self.event = event
         # The price belongs to this pairing of attendee and event. It is copied
@@ -43,12 +39,6 @@ class Reservation:
         # attendee agreed to pay.
         self.price = event.ticket_price()
         self._status = 'reserved'
-
-    @classmethod
-    def issue_number(cls):
-        number = cls._next_number
-        cls._next_number += 1
-        return number
 
     # status has a getter and no setter. Assigning to reservation.status raises
     # an error, so the status can only change through the methods below, and
