@@ -78,6 +78,10 @@ class Concert(Event):
 class Workshop(Event):
     def __init__(self, name, date, capacity, base_price, materials_fee):
         super().__init__(name, date, capacity, base_price)
+        # Something is missing here. Compare how this class stores materials_fee
+        # with how Event stores capacity and base_price. What would happen to a
+        # workshop's ticket price if this value were wrong, and how would you
+        # change the class so that it could not be?
         self.materials_fee = materials_fee
 
     def ticket_price(self):
