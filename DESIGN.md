@@ -100,7 +100,7 @@ Reservation --refers to one--> Event
 
 | Strategy               | Class       | How it meets the count                                                                                                                   |
 | ---------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Coordinator            | Venue       | Stores three collections. Refuses a booking for a sold-out event or a past event, and refuses a refund once the refund window has closed |
+| Coordinator            | Venue       | Stores three collections. Refuses an event already on the calendar, a booking for a sold-out event or a past event, and a refund once the refund window has closed |
 | Status-Driven Behavior | Reservation | Holds a `_status`. `pay()` refuses unless the reservation is reserved, and `check_in()` and `refund()` refuse unless it is paid          |
 | Intermediary Object    | Reservation | Refers to an Attendee and an Event, and holds the price, which belongs to that pairing rather than to either one                         |
 

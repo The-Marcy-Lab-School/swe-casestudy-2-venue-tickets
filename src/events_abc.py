@@ -60,6 +60,11 @@ class Event(ABC):
     def __repr__(self):
         return f'{type(self).__name__}({self.name!r}, {self.date})'
 
+    # Two Event objects describe the same event when they share a name and a
+    # date, so the venue can find an event it already has with `in`
+    def __eq__(self, other):
+        return self.name == other.name and self.date == other.date
+
 
 class Concert(Event):
     SERVICE_FEE = 5

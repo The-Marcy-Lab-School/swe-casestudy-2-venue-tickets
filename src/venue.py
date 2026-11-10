@@ -44,7 +44,13 @@ class Venue:
         return '.' in domain
 
     def add_event(self, event):
+        # `in` compares with ==, which calls Event.__eq__, so an event built
+        # again from the same name and date is found and refused
+        if event in self._events:
+            print(f'{event.name} on {event.date} is already on the calendar.')
+            return None
         self._events.append(event)
+        return event
 
     def add_attendee(self, attendee):
         if not Venue.is_valid_email(attendee.email):

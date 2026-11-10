@@ -63,6 +63,21 @@ def test_repr_names_the_kind_of_event(jazz, pottery):
     assert repr(pottery) == "Workshop('Intro to Pottery', 2026-12-05)"
 
 
+def test_two_events_with_the_same_name_and_date_are_equal(jazz):
+    jazz_again = Concert('Friday Night Jazz', jazz.date, capacity=60, base_price=30,
+                         performer='The Blue Notes')
+
+    assert jazz_again == jazz
+    assert jazz_again is not jazz
+
+
+def test_events_on_different_dates_are_not_equal(jazz):
+    next_week = Concert('Friday Night Jazz', jazz.date + timedelta(days=7), capacity=40,
+                        base_price=25, performer='The Blue Notes')
+
+    assert next_week != jazz
+
+
 def test_one_loop_prices_every_kind_of_event(venue):
     prices = [event.ticket_price() for event in venue.events]
 

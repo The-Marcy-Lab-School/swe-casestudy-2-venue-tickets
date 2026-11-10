@@ -5,6 +5,7 @@ from datetime import timedelta
 import pytest
 
 from attendee import Attendee
+from events import Concert
 from venue import Venue
 
 
@@ -52,6 +53,17 @@ def test_adding_an_already_registered_email_is_refused(venue, capsys):
     assert result is None
     assert len(venue.attendees) == 2
     assert capsys.readouterr().out == 'maya@example.com is already registered.\n'
+
+
+def test_adding_an_event_already_on_the_calendar_is_refused(venue, jazz, capsys):
+    jazz_again = Concert('Friday Night Jazz', jazz.date, capacity=40, base_price=25,
+                         performer='The Blue Notes')
+
+    result = venue.add_event(jazz_again)
+
+    assert result is None
+    assert len(venue.events) == 4
+    assert capsys.readouterr().out == f'Friday Night Jazz on {jazz.date} is already on the calendar.\n'
 
 
 def test_booking_adds_a_reservation(venue, jordan, jazz, today):
