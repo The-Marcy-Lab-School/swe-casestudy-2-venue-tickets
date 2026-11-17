@@ -8,7 +8,7 @@ from attendee import Attendee
 
 def print_events(venue, events):
     # The same loop works for concerts, workshops, and screenings, because every
-    # kind of event answers ticket_price(). The loop never checks which kind it has.
+    # ticket_price() can be called on every kind of event. The loop never checks which kind it has.
     for i, event in enumerate(events, start=1):
         day = event.date.strftime('%a %b %d')
         print(f'{i}. {event.name}, {day}: ${event.ticket_price()}, '

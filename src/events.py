@@ -1,7 +1,7 @@
 """The events the venue hosts.
 
 Event holds what every event has. Concert, Workshop, and Screening are the three
-kinds of event, and each one answers ticket_price() and can_refund() in its own way.
+kinds of event, and each one has its own ticket price and refund rule.
 """
 
 from datetime import timedelta

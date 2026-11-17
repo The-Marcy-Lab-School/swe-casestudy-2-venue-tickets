@@ -10,7 +10,7 @@ To swap it into the application, change the import at the top of sample_data.py 
 to
     from events_abc import Concert, Workshop, Screening
 and run the application. Nothing else changes, because the rest of the code only
-calls methods that every kind of event answers.
+calls methods that can be called on every kind of event.
 
 To see the refusal, run this file on its own:
     python3 src/events_abc.py
@@ -114,6 +114,6 @@ if __name__ == "__main__":
             return super().ticket_price()
 
     try:
-        Festival('Summer Festival', date.today(), 500, 40)
+        Festival('Summer Festival', date.today(), capacity=500, base_price=40)
     except TypeError as error:
         print(f'Python refused to create a Festival: {error}')
