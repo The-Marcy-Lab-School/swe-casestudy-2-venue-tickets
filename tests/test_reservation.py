@@ -38,7 +38,7 @@ def test_checking_in_before_paying_is_refused(venue, jordan, jazz, today, capsys
     reservation.check_in()
 
     assert reservation.status == 'reserved'
-    assert capsys.readouterr().out == f'Cannot check_in: reservation #{reservation.number} is reserved.\n'
+    assert capsys.readouterr().out == 'Reservation must be paid in order to use check_in.\n'
 
 
 def test_paying_twice_is_refused(venue, jordan, jazz, today, capsys):
@@ -48,7 +48,7 @@ def test_paying_twice_is_refused(venue, jordan, jazz, today, capsys):
     reservation.pay()
 
     assert reservation.status == 'paid'
-    assert capsys.readouterr().out == f'Cannot pay: reservation #{reservation.number} is paid.\n'
+    assert capsys.readouterr().out == 'Reservation must be reserved in order to use pay.\n'
 
 
 def test_the_status_cannot_be_assigned_directly(venue, jordan, jazz, today):

@@ -119,7 +119,7 @@ def test_refunding_an_unpaid_reservation_is_refused(venue, jordan, pottery, toda
     venue.refund(reservation, today)
 
     assert reservation.status == 'reserved'
-    assert capsys.readouterr().out == f'Cannot refund: reservation #{reservation.number} is reserved.\n'
+    assert capsys.readouterr().out == 'Reservation must be paid in order to use refund.\n'
 
 
 def test_reservations_for_returns_only_that_attendees_reservations(venue, maya, jordan):

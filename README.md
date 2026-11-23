@@ -29,7 +29,7 @@ Choose an option (1-8): 1
 
 Choose an option (1-8): 5
 Enter the reservation number: 1002
-Cannot check_in: reservation #1002 is reserved.
+Reservation must be paid in order to use check_in.
 #1002: Jordan Lee, Intro to Pottery, $25, reserved
 ```
 
